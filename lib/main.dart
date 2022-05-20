@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:dietera/pages/details/details.dart';
-import 'package:dietera/pages/details/details.dart';
 import 'package:dietera/pages/home/widgets/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Fitness Tracker',
       theme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: DetailsPage(),
 
 
 
