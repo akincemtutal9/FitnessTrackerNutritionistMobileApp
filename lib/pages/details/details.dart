@@ -3,6 +3,7 @@ import 'package:dietera/pages/details/widgets/graph.dart';
 import 'package:dietera/pages/details/widgets/info.dart';
 import 'package:dietera/pages/details/widgets/stats.dart';
 import 'package:dietera/pages/details/widgets/steps.dart';
+import 'package:dietera/widgets/bottom_navigation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class DetailsPage extends StatelessWidget {
           Graph(),
           Info(),
           Stats(),
+          BottomNavigation(),
 
 
 
