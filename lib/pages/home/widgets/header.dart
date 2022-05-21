@@ -37,7 +37,7 @@ class AppHeader extends StatelessWidget {
           child: CircleAvatar(
             minRadius: 25,
             maxRadius: 25,
-            foregroundImage: AssetImage('../assets/profile.png') ,
+            foregroundImage: AssetImage('../assets/pp.png') ,
 
           ),
         ),
