@@ -1,49 +1,52 @@
+
 import 'dart:math';
 
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-
 class RecentActivities extends StatelessWidget {
   const RecentActivities({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Recent Activity', style: Theme.of(context).textTheme.headline1),
-              const SizedBox(height: 20),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) => const ActivityItem(),
-                ),
-              )
-            ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            vertical: 20,
+            horizontal: 30,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          Text(
+            'Recent Activities',
+            style: Theme.of(context).textTheme.headline1,
           ),
-        ));
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context,index)=> ActivityItem(),),
+          )
+          ],
+        ),
+      ));
   }
 }
-
 class ActivityItem extends StatelessWidget {
   const ActivityItem({Key? key}) : super(key: key);
-
-  static const activities = [
+  static const activites =[
     'Running',
     'Swimming',
     'Hiking',
     'Walking',
-    'Cycling'
+    'Cycling',
   ];
 
   @override
   Widget build(BuildContext context) {
-    String activity = activities[Random().nextInt(activities.length)];
+    String activity = activites[Random().nextInt(activites.length)];
+
 
     return GestureDetector(
-      onTap: () {
+      onTap: (){
         Navigator.of(context).pushNamed('/details');
       },
       child: Container(
@@ -51,55 +54,59 @@ class ActivityItem extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
           border: Border.all(
-            color: const Color(0xffe1e1e1),
+            color: Color(0xffe1e1e1),
           ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10)
         ),
         child: Row(
           children: [
-            const SizedBox(width: 10),
+            SizedBox(width: 10,),
             Container(
               padding: const EdgeInsets.all(4),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Color(0xffcff2ff),
               ),
-              height: 35,
+            height: 35,
               width: 35,
-              child: Container(
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage('../assets/running.jpg'),
-                      fit: BoxFit.fill,
-                    )),
-              ),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    image: AssetImage('../assets/running.jpg',),
+                    fit: BoxFit.fill,
+
+                )),
             ),
-            const SizedBox(width: 20),
-            Text(
-              activity,
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w900,
-              ),
             ),
-            const Expanded(child: SizedBox()),
-            const Icon(Icons.timer, size: 12),
-            const SizedBox(width: 5),
-            const Text(
-              '30min',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
+            SizedBox(width: 20,),
+            Text(activity,
+              style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w900 ),
             ),
-            const SizedBox(width: 10),
-            const Icon(Icons.wb_sunny_outlined, size: 12),
-            const SizedBox(width: 5),
-            const Text(
-              '55kcal',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
+            Expanded(child: SizedBox()),
+            Icon(Icons.timer,size: 12,),
+            SizedBox(width: 5,),
+            Text('30min',
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w300,
             ),
-            const SizedBox(
-              width: 20,
-            )
+            ),
+            SizedBox(width: 10,),
+            Icon(Icons.wb_sunny_outlined,size: 12,),
+            SizedBox(width: 5,),
+            Text('55kcal',
+            style: TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.w300,
+            ),
+            ),
+          SizedBox(
+            width: 20,
+
+          ),
           ],
         ),
       ),
