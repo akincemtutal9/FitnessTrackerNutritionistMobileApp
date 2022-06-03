@@ -1,5 +1,6 @@
 import 'package:FitnessTrackerNutritionistMobileApp/pages/details/details.dart';
 import 'package:FitnessTrackerNutritionistMobileApp/pages/home/home.dart';
+import 'package:FitnessTrackerNutritionistMobileApp/pages/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -29,10 +30,11 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
+        '/login':(context) => LoginScreen(),
         '/': (context) => const HomePage(),
         '/details': (context) => const DetailsPage(),
       },
-      initialRoute: '/',
+      initialRoute: '/login',
     );
   }
 }
