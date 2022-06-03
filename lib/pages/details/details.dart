@@ -1,11 +1,10 @@
-import 'package:dietera/pages/details/widgets/dates.dart';
-import 'package:dietera/pages/details/widgets/graph.dart';
-import 'package:dietera/pages/details/widgets/info.dart';
-import 'package:dietera/pages/details/widgets/stats.dart';
-import 'package:dietera/pages/details/widgets/steps.dart';
-import 'package:dietera/widgets/bottom_navigation.dart';
-import 'package:dietera/pages/details/widgets/appbar.dart';
-import 'package:flutter/services.dart';
+import 'package:FitnessTrackerNutritionistMobileApp/pages/details/widgets/stats.dart';
+import 'package:FitnessTrackerNutritionistMobileApp/pages/details/widgets/appbar.dart';
+import 'package:FitnessTrackerNutritionistMobileApp/pages/details/widgets/dates.dart';
+import 'package:FitnessTrackerNutritionistMobileApp/pages/details/widgets/graph.dart';
+import 'package:FitnessTrackerNutritionistMobileApp/pages/details/widgets/info.dart' hide Stats;
+import 'package:FitnessTrackerNutritionistMobileApp/pages/details/widgets/steps.dart';
+import 'package:FitnessTrackerNutritionistMobileApp/widgets/bottom_navigation.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -14,18 +13,20 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(appBar: AppBar(),),
+      backgroundColor: Colors.white,
+      appBar: MainAppBar(appBar: AppBar()),
       body: Column(
-        children: [
+        children: const [
           Dates(),
           Steps(),
           Graph(),
           Info(),
+          Divider(height: 30),
           Stats(),
+          SizedBox(height: 30),
           BottomNavigation(),
         ],
       ),
     );
   }
 }
-
