@@ -2,12 +2,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:FitnessTrackerNutritionistMobileApp/constants.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
-class _LoginScreenState extends State<LoginScreen> {
-  bool _rememberMe = false;
+class _RegisterScreenState extends State<RegisterScreen> {
+  Widget _buildNameTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Name',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 50.0,
+          child: TextField(
+            keyboardType: TextInputType.name,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your name',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+  Widget _buildSurnameTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Surname',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 50.0,
+          child: TextField(
+            keyboardType: TextInputType.name,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your surname',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   Widget _buildEmailTF() {
     return Column(
@@ -79,61 +146,20 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildForgotPasswordBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: FlatButton(
-        onPressed: () => print('Forgot Password Button Pressed'),
-        padding: EdgeInsets.only(right: 0.0),
-        child: Text(
-          'Forgot Password?',
-          style: kLabelStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildRememberMeCheckbox() {
-    return Container(
-      height: 20.0,
-      child: Row(
-        children: <Widget>[
-          Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
-            child: Checkbox(
-              value: _rememberMe,
-              checkColor: Colors.green,
-              activeColor: Colors.white,
-              onChanged: (value) {
-                setState(() {
-                  _rememberMe = value!;
-                });
-              },
-            ),
-          ),
-          Text(
-            'Remember me',
-            style: kLabelStyle,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLoginBtn() {
+  Widget _buildRegisterBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () => print('Register Button Pressed'),
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
         color: Colors.white,
         child: Text(
-          'LOGIN',
+          'REGISTER',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -212,14 +238,14 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSignupBtn() {
+  Widget _buildSigninBtn() {
     return GestureDetector(
       onTap: () => print('Sign Up Button Pressed'),
       child: RichText(
         text: TextSpan(
           children: [
             TextSpan(
-              text: 'Don\'t have an Account? ',
+              text: 'If you have an Account? ',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -227,7 +253,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             TextSpan(
-              text: 'Sign Up',
+              text: 'Sign in',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -268,31 +294,22 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Container(
                 height: double.infinity,
-
-
-
                 child: SingleChildScrollView(
-
-
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
-
                     horizontal: 40.0,
-                    vertical: 20.0,
+                    vertical: 120.0,
                   ),
                   child: Column(
-
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                     Column(
-                       children: [
-                         Image.asset('../assets/dietera_logo.png'),
-
-                       ],
-                     ),
-
+                      Column(
+                        children: [
+                          Image.asset('../assets/dietera_logo.png'),
+                        ],
+                      ),
                       Text(
-                        'Sign In',
+                        'Sign up',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',
@@ -300,20 +317,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 30.0),
+
+                      _buildNameTF(),
+                      _buildSurnameTF(),
                       _buildEmailTF(),
-                      SizedBox(
-                        height: 30.0,
-
-
-                      ),
                       _buildPasswordTF(),
-                      _buildForgotPasswordBtn(),
-                      _buildRememberMeCheckbox(),
-                      _buildLoginBtn(),
+                      _buildRegisterBtn(),
                       _buildSignInWithText(),
                       _buildSocialBtnRow(),
-                      _buildSignupBtn(),
+                      _buildSigninBtn(),
                     ],
                   ),
                 ),

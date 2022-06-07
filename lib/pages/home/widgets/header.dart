@@ -31,7 +31,7 @@ class AppHeader extends StatelessWidget {
             child: CircleAvatar(
               minRadius: 25,
               maxRadius: 25,
-              foregroundImage: AssetImage('assets/profile.jpg'),
+              foregroundImage: AssetImage('../assets/profile.jpg'),
             ),
           ),
           Positioned(
@@ -49,7 +49,7 @@ class AppHeader extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Michaele',
+                  'Akin Cem',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
